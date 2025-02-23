@@ -14,7 +14,11 @@ public class PaymentContext {
     }
 
     public void executePayment(String paymentType, double amount) {
-        Payment payment = paymentFactory.getPaymentMethod(paymentType);
-        payment.pay(amount);
+        try {
+            Payment payment = paymentFactory.getPaymentMethod(paymentType);
+            payment.pay(amount);
+        } catch (IllegalArgumentException e) {
+            System.err.println("خطا: " + e.getMessage());
+        }
     }
 }

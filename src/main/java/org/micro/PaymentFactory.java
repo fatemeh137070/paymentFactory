@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class PaymentFactory {
 
@@ -15,6 +17,7 @@ public class PaymentFactory {
     }
 
     public Payment getPaymentMethod(String paymentType) {
-        return (Payment) context.getBean(paymentType);
+        return Optional.ofNullable(context.getBean(paymentType, Payment.class))
+                .orElseThrow(() -> new IllegalArgumentException("نوع پرداخت نامعتبر است: " + paymentType));
     }
 }
