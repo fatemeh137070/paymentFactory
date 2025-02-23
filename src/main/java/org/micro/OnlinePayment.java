@@ -2,7 +2,7 @@ package org.micro;
 
 import org.springframework.stereotype.Component;
 
-@Component("onlinePayment")
+@Component("online_payment")
 public class OnlinePayment implements Payment {
     @Override
     public void pay(double amount) {

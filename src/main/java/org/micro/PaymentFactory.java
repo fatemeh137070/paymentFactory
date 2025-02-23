@@ -16,8 +16,9 @@ public class PaymentFactory {
         this.context = context;
     }
 
-    public Payment getPaymentMethod(String paymentType) {
-        return Optional.ofNullable(context.getBean(paymentType, Payment.class))
+    public Payment getPaymentMethod(PaymentType paymentType) {
+        String beanName = paymentType.name().toLowerCase();
+        return Optional.ofNullable(context.getBean(beanName, Payment.class))
                 .orElseThrow(() -> new IllegalArgumentException("نوع پرداخت نامعتبر است: " + paymentType));
     }
 }

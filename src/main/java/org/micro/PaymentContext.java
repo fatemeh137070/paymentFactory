@@ -13,7 +13,7 @@ public class PaymentContext {
         this.paymentFactory = paymentFactory;
     }
 
-    public void executePayment(String paymentType, double amount) {
+    public void executePayment(PaymentType paymentType, double amount) {
         try {
             Payment payment = paymentFactory.getPaymentMethod(paymentType);
             payment.pay(amount);

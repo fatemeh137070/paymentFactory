@@ -12,9 +12,8 @@ public class MainApplication {
 
         PaymentContext paymentContext = context.getBean(PaymentContext.class);
 
-        paymentContext.executePayment("cardPayment", 100000);
-        paymentContext.executePayment("cashPayment", 50000);
-        paymentContext.executePayment("onlinePayment", 200000);
-//        paymentContext.executePayment("invalidPayment", 30000);
+        paymentContext.executePayment(PaymentType.CARD_PAYMENT, 100000);
+        paymentContext.executePayment(PaymentType.CASH_PAYMENT, 50000);
+        paymentContext.executePayment(PaymentType.ONLINE_PAYMENT, 200000);
     }
 }
